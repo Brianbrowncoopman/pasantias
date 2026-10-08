@@ -21,6 +21,11 @@ const guardarGestor = () => {
 
 <template>
   <div class="admin-container">
+
+    <div class="gestores-title">
+      <h1>Gestores de Acceso QR</h1>
+    </div>
+    
     
     <!-- LAYOUT PRINCIPAL EN 2 COLUMNAS -->
     <div class="main-layout">
@@ -39,7 +44,7 @@ const guardarGestor = () => {
         </div>
 
         <div class="button-wrapper">
-            <button type="submit" class="btn-connexion">Buscar</button>
+            <button type="submit" class="btn-connexion">Crear Gestor</button>
         </div>
 
       </div>
@@ -224,5 +229,11 @@ const guardarGestor = () => {
 
 .btn-connexion:active {
   transform: scale(0.98);
+}
+
+
+.gestores-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 </style>

@@ -9,6 +9,7 @@ const pasantiasAutorizadas = ref([])
   <div class="admin-container">
     
     <!-- SECCIÓN: Histórico Pasantías Autorizadas -->
+     {aca falta manejar el filtro para cada uno desde la bbdd}
     <div class="section-block full-width">
       <h3>Histórico Pasantías Autorizadas</h3>
       

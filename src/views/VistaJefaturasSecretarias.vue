@@ -14,21 +14,18 @@ const historicoServicio = ref([])
 
 <template>
   <div class="admin-container">
+
+    {aca falta manejar el filtro para cada uno desde la bbdd solo en la tercera vista}
+    <div class="usuario-info">
+        <label>Bienvenido / a</label>
+        <h2>Nombre del Usuario</h2>
+    </div>
     
     <!-- CONTENEDOR CENTRALIZADO -->
     <div class="content-wrapper">
       
       <!-- SECCIÓN SUPERIOR: Saludo / Bienvenida -->
-      <div class="welcome-section">
-        <label class="welcome-label">Bienvenido / a</label>
-        <div class="welcome-card">
-          <span>{{ usuario.nombreRol }}</span>
-        </div>
-        <br />
-        <div class="button-wrapper">
-          <button type="submit" class="btn-connexion">Buscar</button>
-        </div>
-      </div>
+      
 
       <!-- SECCIÓN 1: Solicitudes de Pasantías en Proceso de Autorización -->
       <div class="section-block">
@@ -212,6 +209,15 @@ const historicoServicio = ref([])
 
 .btn-connexion:active {
   transform: scale(0.98);
+}
+
+.usuario-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
 </style>

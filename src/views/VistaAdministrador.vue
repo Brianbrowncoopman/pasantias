@@ -191,7 +191,7 @@ const guardarEstadoCredencial = () => {
       </div>
     </div>
 
-    <!-- SECCIÓN INFERIOR -->
+    <!-- SECCIÓN INFERIOR 
     <div class="bottom-grid">
       <div class="bottom-card">
         <label>Modificación Estado Credencial</label>
@@ -218,7 +218,7 @@ const guardarEstadoCredencial = () => {
           <button type="submit" @click="guardarEstadoCredencial" class="btn-connexion">Guardar</button>
         </div>
       </div>
-    </div>
+    </div>-->
 
   </div>
 </template>

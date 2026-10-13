@@ -696,8 +696,7 @@ const actualizarSolicitante = () => {
           </h2>
           <div class="header-divider"></div>
           <p class="formulario-descripcion">
-            Complete los datos requeridos y revise la documentación
-            antes de crear su solicitud.
+            Ingrese todos los antecedentes requeridos
           </p>
         </header>
         <section class="documentacion-section">
@@ -877,8 +876,7 @@ const actualizarSolicitante = () => {
         <div class="header-divider"></div>
 
         <p class="formulario-descripcion">
-          Complete y revise la documentación requerida para
-          continuar con su solicitud de pasantía particular.
+          Ingrese todos los antecedentes requeridos
         </p>
       </header>
 
@@ -1029,7 +1027,7 @@ const actualizarSolicitante = () => {
       <header class="formulario-header">
         <h2 class="h2">FORMULARIO SOLICITUD DE PASANTIA OBSERVACIONAL PARA ESTUDIANTES DE PREGRADO EN EL HOSPITAL SAN JUAN DE DIOS (QUE NO FORMA PARTE DE SU FORMACIÓN CURRICULAR)</h2>
         <div class="header-divider"></div>
-        <p class="formulario-descripcion">Complete los datos y requisitos necesarios para la pasantía observacional.</p>
+        <p class="formulario-descripcion">Ingrese todos los antecedentes requeridos.</p>
       </header>
       <section class="documentacion-section documentacion-section-b">
         <div class="documentos-grid">
@@ -1094,7 +1092,7 @@ const actualizarSolicitante = () => {
       <header class="formulario-header">
         <h2 class="h2">FORMULARIO SOLICITUD DE PASANTIA DE PERFECCIONAMIENTO PARA PROFESIONALES Y TÉCNICOS DE OTRAS CARRERAS, Y ADMINISTRATIVOS DE INSTITUCIONES PÚBLICAS Y PRIVADAS EN EL HOSPITAL SAN JUAN DE DIOS</h2>
         <div class="header-divider"></div>
-        <p class="formulario-descripcion">Complete los datos de la institución y la documentación requerida.</p>
+        <p class="formulario-descripcion">Ingrese todos los antecedentes requeridos.</p>
       </header>
       <section class="documentacion-section">
         <div class="institucion-container widget-group searchable-select">
@@ -1152,7 +1150,7 @@ const actualizarSolicitante = () => {
       <header class="formulario-header">
         <h2 class="h2">FORMULARIO SOLICITUD DE PASANTIA DE PERFECCIONAMIENTO PARA PROFESIONALES Y TÉCNICOS DE OTRAS CARRERAS, Y ADMINISTRATIVOS DE FORMA PARTICULAR EN EL HOSPITAL SAN JUAN DE DIOS</h2>
         <div class="header-divider"></div>
-        <p class="formulario-descripcion">Verifique y autorice los documentos necesarios para la pasantía particular.</p>
+        <p class="formulario-descripcion">Ingrese todos los antecedentes requeridos.</p>
       </header>
       <section class="documentacion-section documentacion-section-b">
         <div class="documentos-grid documentos-grid-b">

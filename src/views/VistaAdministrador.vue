@@ -7,56 +7,56 @@ const formCredencial = reactive({
   estadoSeleccionado: ''
 })
 
-const estado = ref(["Id Solicitante", "Nombre Solicitante", "Formulario", "Dias en tramite", "Servicio/Unidad",
-"Prioridad", "Estado", "Desplegar"])
+// --- SECCIÓN 1: Estados de Solicitudes en Trámite ---
+const estado = ref([
+  "Id Solicitante", "Nombre Solicitante", "Formulario", "Dias en tramite", 
+  "Servicio/Unidad", "Prioridad", "Estado", "Desplegar"
+])
 
-const searchQuery = ref('')
-const showDropdown = ref(false)
+const searchQueryEstado = ref('')
+const showDropdownEstado = ref(false)
 
 const estadosFiltrados = computed(() => {
-  if (!searchQuery.value) return estado.value
+  if (!searchQueryEstado.value) return estado.value
   return estado.value.filter(e => 
-    e.toLowerCase().includes(searchQuery.value.toLowerCase())
+    e.toLowerCase().includes(searchQueryEstado.value.toLowerCase())
   )
 })
 
-
 const seleccionarEstado = (selectedEstado) => {
-  searchQuery.value = selectedEstado
-  showDropdown.value = false
+  searchQueryEstado.value = selectedEstado
+  showDropdownEstado.value = false
 }
 
-const handleClickOutside = (e) => {
-  if (!e.target.closest('.searchable-select')) {
-    showDropdown.value = false
-  }
-}
 
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
+// --- SECCIÓN 2: Estado de Pasantías Vigentes ---
+const vigentes = ref([
+  "Numero resolución", "Nombre solicitante", "Fecha inicio", "Fecha término", 
+  "Servicio/Unidad", "Estado QR", "Estado Credencial", "Desplegar"
+])
 
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
-
-
-const vigentes = ref(["Numero resolución", "Nombre solicitante", "Fecha inicio", "Fecha término", "Servicio/Unidad",
-"Estado QR", "Estado Credencial", "Desplegar"])
-
-
-
+const searchQueryVigente = ref('')
+const showDropdownVigente = ref(false)
 
 const vigentesFiltrados = computed(() => {
-  if (!searchQuery.value) return vigentes.value
+  if (!searchQueryVigente.value) return vigentes.value
   return vigentes.value.filter(e => 
-    e.toLowerCase().includes(searchQuery.value.toLowerCase())
+    e.toLowerCase().includes(searchQueryVigente.value.toLowerCase())
   )
 })
 
 const seleccionarVigente = (selectedVigente) => {
-  searchQuery.value = selectedVigente
-  showDropdown.value = false
+  searchQueryVigente.value = selectedVigente
+  showDropdownVigente.value = false
+}
+
+
+// --- GESTIÓN DE CLICS FUERA (Cierra ambos desplegables de forma limpia) ---
+const handleClickOutside = (e) => {
+  if (!e.target.closest('.searchable-select')) {
+    showDropdownEstado.value = false
+    showDropdownVigente.value = false
+  }
 }
 
 onMounted(() => {
@@ -111,21 +111,21 @@ const guardarEstadoCredencial = () => {
       <div class="filtrar">
         <h3>Estados Solicitudes en Trámite</h3>
         
-        <!-- SELECTOR BUSCABLE CORREGIDO -->
+        <!-- SELECTOR BUSCABLE 1 -->
         <div class="searchable-select">
             <label>Estados</label>
             <div class="search-input-wrapper">
               <input 
                 type="text" 
-                v-model="searchQuery" 
-                @focus="showDropdown = true" 
-                placeholder="Buscar o seleccionar estado..." 
+                v-model="searchQueryEstado" 
+                @focus="showDropdownEstado = true" 
+                placeholder="Filtrar por parametro..." 
                 class="input-search-green"
               />
               <span class="dropdown-arrow">▼</span>
             </div>
 
-            <ul v-if="showDropdown && estadosFiltrados.length > 0" class="dropdown-list">
+            <ul v-if="showDropdownEstado && estadosFiltrados.length > 0" class="dropdown-list">
               <li 
                 v-for="item in estadosFiltrados" 
                 :key="item" 
@@ -155,31 +155,34 @@ const guardarEstadoCredencial = () => {
 
     <!-- SECCIÓN MEDIA 2: Estado de Pasantías Vigentes -->
     <div class="section-block">
-      <h3>Estado de Pasantías Vigentes</h3>
+      <div class="filtrar">
+        <h3>Estado de Pasantías Vigentes</h3>
 
-      <div class="input-group searchable-select">
-            <label>estado</label>
-            <div class="search-input-wrapper">
-              <input 
-                type="text" 
-                v-model="searchQuery" 
-                @focus="showDropdown = true" 
-                placeholder="..." 
-                class="input-search-green"
-              />
-              <span class="dropdown-arrow">▼</span>
-            </div>
+        <!-- SELECTOR BUSCABLE 2 -->
+        <div class="searchable-select">
+              <label>Estado</label>
+              <div class="search-input-wrapper">
+                <input 
+                  type="text" 
+                  v-model="searchQueryVigente" 
+                  @focus="showDropdownVigente = true" 
+                  placeholder="Filtrar por parametro..."  
+                  class="input-search-green"
+                />
+                <span class="dropdown-arrow">▼</span>
+              </div>
 
-            <ul v-if="showDropdown && vigentesFiltrados.length > 0" class="dropdown-list">
-              <li 
-                v-for="vigentes in vigentesFiltrados" 
-                :key="vigentes" 
-                @click="seleccionarVigente(vigentes)"
-              >
-                {{ vigentes }}
-              </li>
-            </ul>
-          </div>
+              <ul v-if="showDropdownVigente && vigentesFiltrados.length > 0" class="dropdown-list">
+                <li 
+                  v-for="vigenteItem in vigentesFiltrados" 
+                  :key="vigenteItem" 
+                  @click="seleccionarVigente(vigenteItem)"
+                >
+                  {{ vigenteItem }}
+                </li>
+              </ul>
+        </div>
+      </div>  
 
       <div class="table-card">
         <div class="table-header-grid">
@@ -230,6 +233,7 @@ const guardarEstadoCredencial = () => {
 </template>
 
 <style scoped>
+/* Tus estilos se mantienen exactamente igual */
 .admin-container {
   width: 100%;
   flex: 1;
@@ -257,7 +261,7 @@ const guardarEstadoCredencial = () => {
 }
 
 .section-block {
-  max-width: 1100px;
+  max-width: 100%;
   width: 100%;
   margin: 0 auto;
 }
@@ -387,7 +391,6 @@ const guardarEstadoCredencial = () => {
   margin-bottom: 0.5rem;
 }
 
-/* --- ESTILOS CORREGIDOS PARA EL SELECTOR BUSCABLE --- */
 .searchable-select {
   position: relative;
   display: flex;

@@ -497,10 +497,10 @@ const actualizarSolicitante = () => {
         <!-- Botones de Carga de Archivos -->
         <div class="actions-row">
           <div class="button-wrapper">
-            <button type="button" class="btn-connexion">Cargar Documento Identidad</button>
+            <button type="button" class="btn-cargarDocumento">Cargar Documento Identidad</button>
           </div>
           <div class="button-wrapper">
-            <button type="button" class="btn-connexion">Cargar Certificado de Antecedentes</button>
+            <button type="button" class="btn-cargarDocumento">Cargar Certificado de Antecedentes</button>
           </div>
         </div>
         
@@ -883,7 +883,7 @@ const actualizarSolicitante = () => {
       </header>
 
       <!-- DOCUMENTACIÓN REQUERIDA -->
-      <section class="documentacion-section">
+      <section class="documentacion-section documentacion-section-b">
 
         <div class="documentos-grid documentos-grid-b">
 
@@ -1025,38 +1025,33 @@ const actualizarSolicitante = () => {
       </footer>
     </div>
     <!-- Formulario C -->
-    <div v-if="formServicio.tipoFormulario === 'Formulario C'" class="formulario">
-      <h2>FORMULARIO SOLICITUD DE PASANTIA OBSERVACIONAL PARA ESTUDIANTES DE PREGRADO EN EL HOSPITAL SAN JUAN DE DIOS (QUE NO FORMA PARTE DE SU FORMACIÓN CURRICULAR)</h2>
-      <div class="form-row-3">
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Carta de Solicitud</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+    <div v-if="formServicio.tipoFormulario === 'Formulario C'" class="formulario solicitud-pasantia">
+      <header class="formulario-header">
+        <h2 class="h2">FORMULARIO SOLICITUD DE PASANTIA OBSERVACIONAL PARA ESTUDIANTES DE PREGRADO EN EL HOSPITAL SAN JUAN DE DIOS (QUE NO FORMA PARTE DE SU FORMACIÓN CURRICULAR)</h2>
+        <div class="header-divider"></div>
+        <p class="formulario-descripcion">Complete los datos y requisitos necesarios para la pasantía observacional.</p>
+      </header>
+      <section class="documentacion-section documentacion-section-b">
+        <div class="documentos-grid">
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">▤</span><span>Carta de Solicitud</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaCarta" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado Alumno regular</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">▣</span><span>Certificado Alumno regular</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaAlumno" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado de Vacuna de Hepatitis B</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">✚</span><span>Certificado de Vacuna de Hepatitis B</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaHepatitis" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado de Viaje</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>No aplica / autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">✈</span><span>Certificado de Viaje</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaViaje" /><span>No aplica / autorizado</span></label>
           </div>  
+        </div>
 
+        <div class="form-row-3" style="margin-top: 1.5rem;">
           <div class="widget-group searchable-select">
             <label>País</label>
             <div class="search-input-wrapper">
@@ -1085,121 +1080,98 @@ const actualizarSolicitante = () => {
             <label>Universidad</label>
             <input type="text" v-model="formServicio.universidad" required />
           </div>
-      </div>
-      <br>
-      <div class="form-row-3">
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Crear Solicitud</button>
         </div>
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Guardar Borrador</button>
-        </div>
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Cancelar</button>
-        </div> 
-      </div>
+      </section>
+      
+      <footer class="formulario-actions">
+        <button type="button" class="btn-connexion btn-action btn-crear" @click="actualizarSolicitante"><span class="action-icon">＋</span>Crear Solicitud</button>
+        <button type="button" class="btn-connexion btn-action btn-borrador" @click="actualizarSolicitante"><span class="action-icon">▣</span>Guardar Borrador</button>
+        <button type="button" class="btn-connexion btn-action btn-cancelar" @click="actualizarSolicitante"><span class="action-icon">✕</span>Cancelar</button>
+      </footer>
     </div>
     <!-- Formulario D -->
-    <div v-if="formServicio.tipoFormulario === 'Formulario D'" class="formulario">
-      <h2>FORMULARIO SOLICITUD DE PASANTIA DE PERFECCIONAMIENTO PARA PROFESIONALES Y TÉCNICOS DE OTRAS CARRERAS, Y ADMINISTRATIVOS DE INSTITUCIONES PÚBLICAS Y PRIVADAS EN EL HOSPITAL SAN JUAN DE DIOS</h2>
-      <div class="form-row-3">
-          <div class="widget-group searchable-select">
-            <label>Listado instituciones</label>
-            <div class="search-input-wrapper">
-              <input 
-                type="text" 
-                v-model="searchQueryListadoInstituciones" 
-                @focus="showDropdownListadoInstituciones = true" 
-                placeholder="Seleccione institución..." 
-                class="input-search-green"
-                readonly
-              />
-              <span class="dropdown-arrow">▼</span>
-            </div>
+    <div v-if="formServicio.tipoFormulario === 'Formulario D'" class="formulario solicitud-pasantia">
+      <header class="formulario-header">
+        <h2 class="h2">FORMULARIO SOLICITUD DE PASANTIA DE PERFECCIONAMIENTO PARA PROFESIONALES Y TÉCNICOS DE OTRAS CARRERAS, Y ADMINISTRATIVOS DE INSTITUCIONES PÚBLICAS Y PRIVADAS EN EL HOSPITAL SAN JUAN DE DIOS</h2>
+        <div class="header-divider"></div>
+        <p class="formulario-descripcion">Complete los datos de la institución y la documentación requerida.</p>
+      </header>
+      <section class="documentacion-section">
+        <div class="institucion-container widget-group searchable-select">
+          <label>Listado de instituciones</label>
+          <div class="search-input-wrapper">
+            <input 
+              type="text" 
+              v-model="searchQueryListadoInstituciones" 
+              @focus="showDropdownListadoInstituciones = true" 
+              placeholder="Seleccione institución..." 
+              class="input-search-green"
+              readonly
+            />
+            <span class="dropdown-arrow">▼</span>
+          </div>
 
-            <ul v-if="showDropdownListadoInstituciones && institucionesFiltradas.length > 0" class="dropdown-list">
-              <li 
-                v-for="item in institucionesFiltradas" 
-                :key="item" 
-                @click="seleccionarInstitucion(item)"
-              >
-                {{ item }}
-              </li>
-            </ul>
+          <ul v-if="showDropdownListadoInstituciones && institucionesFiltradas.length > 0" class="dropdown-list">
+            <li 
+              v-for="item in institucionesFiltradas" 
+              :key="item" 
+              @click="seleccionarInstitucion(item)"
+            >
+              {{ item }}
+            </li>
+          </ul>
+        </div>
+        <div class="documentos-grid">
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">▤</span><span>Carta Solicitud Director</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaCarta" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Carta Solicitud Director</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">▣</span><span>Certificado Titulo</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaTitulo" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado Titulo</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">⇄</span><span>Certificado de Relacion de Servicio</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaRelacion" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado de Relacion de Servicio</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
-          </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado Seguro de Viaje</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>No aplica / autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">✈</span><span>Certificado Seguro de Viaje</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaSeguroViaje" /><span>No aplica / autorizado</span></label>
           </div>  
-      </div>
-      <br>
-      <div class="form-row-3">
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Crear Solicitud</button>
         </div>
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Guardar Borrador</button>
-        </div>
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Cancelar</button>
-        </div> 
-      </div>
+      </section>
+      
+      <footer class="formulario-actions">
+        <button type="button" class="btn-connexion btn-action btn-crear" @click="actualizarSolicitante"><span class="action-icon">＋</span>Crear Solicitud</button>
+        <button type="button" class="btn-connexion btn-action btn-borrador" @click="actualizarSolicitante"><span class="action-icon">▣</span>Guardar Borrador</button>
+        <button type="button" class="btn-connexion btn-action btn-cancelar" @click="actualizarSolicitante"><span class="action-icon">✕</span>Cancelar</button>
+      </footer>
     </div>
     <!-- Formulario E -->
-    <div v-if="formServicio.tipoFormulario === 'Formulario E'" class="formulario">
-      <h2>FORMULARIO SOLICITUD DE PASANTIA DE PERFECCIONAMIENTO PARA PROFESIONALES Y TÉCNICOS DE OTRAS CARRERAS, Y ADMINISTRATIVOS DE FORMA PARTICULAR EN EL HOSPITAL SAN JUAN DE DIOS</h2>
-      <div class="form-row-3">
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Carta Solicitud Director</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+    <div v-if="formServicio.tipoFormulario === 'Formulario E'" class="formulario solicitud-pasantia">
+      <header class="formulario-header">
+        <h2 class="h2">FORMULARIO SOLICITUD DE PASANTIA DE PERFECCIONAMIENTO PARA PROFESIONALES Y TÉCNICOS DE OTRAS CARRERAS, Y ADMINISTRATIVOS DE FORMA PARTICULAR EN EL HOSPITAL SAN JUAN DE DIOS</h2>
+        <div class="header-divider"></div>
+        <p class="formulario-descripcion">Verifique y autorice los documentos necesarios para la pasantía particular.</p>
+      </header>
+      <section class="documentacion-section documentacion-section-b">
+        <div class="documentos-grid documentos-grid-b">
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">▤</span><span>Carta Solicitud Director</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaCarta" /><span>Autorizado</span></label>
           </div>
-          <div class="button-wrapper">
-            <button type="button" class="btn-connexion" @click="actualizarSolicitante">Certificado de Titulo</button>
-            <label class="checkbox-label">
-              <input type="checkbox" v-model="formServicio.noAplicaCarta" />
-              <span>Autorizado</span>
-            </label>
+          <div class="documento-card">
+            <button type="button" class="btn-connexion documento-btn" @click="actualizarSolicitante"><span class="documento-icon">▣</span><span>Certificado de Titulo</span></button>
+            <label class="checkbox-label"><input type="checkbox" v-model="formServicio.noAplicaTitulo" /><span>Autorizado</span></label>
           </div>
-      </div>
-      <br>
-      <div class="form-row-3">
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Crear Solicitud</button>
         </div>
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Guardar Borrador</button>
-        </div>
-        <div class="button-wrapper">
-          <button type="button" class="btn-connexion" @click="actualizarSolicitante">Cancelar</button>
-        </div> 
-      </div>
+      </section>
+      
+      <footer class="formulario-actions">
+        <button type="button" class="btn-connexion btn-action btn-crear" @click="actualizarSolicitante"><span class="action-icon">＋</span>Crear Solicitud</button>
+        <button type="button" class="btn-connexion btn-action btn-borrador" @click="actualizarSolicitante"><span class="action-icon">▣</span>Guardar Borrador</button>
+        <button type="button" class="btn-connexion btn-action btn-cancelar" @click="actualizarSolicitante"><span class="action-icon">✕</span>Cancelar</button>
+      </footer>
     </div>
 
   </div>
@@ -1218,7 +1190,7 @@ const actualizarSolicitante = () => {
   min-width: 0;
   padding: clamp(1rem, 2.5vw, 2.5rem);
   box-sizing: border-box;
-  background: #f3f6f9;
+  background: #e6e6e6;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -1423,6 +1395,44 @@ const actualizarSolicitante = () => {
   outline-offset: 2px;
 }
 
+.btn-cargarDocumento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: auto;
+  max-width: 100%;
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  background: #4c81f2;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.18);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-cargarDocumento:hover {
+  background: #486ab4;
+  box-shadow: 0 5px 14px rgba(7, 139, 103, 0.2);
+}
+
+.btn-cargarDocumento:active {
+  transform: translateY(1px);
+}
+
+.btn-cargarDocumento:focus-visible {
+  outline: 3px solid rgba(12, 175, 128, 0.25);
+  outline-offset: 2px;
+}
+
 .checkbox-label {
   display: flex;
   align-items: flex-start;
@@ -1444,7 +1454,7 @@ const actualizarSolicitante = () => {
 }
 
 /* =========================================
-   CONTENEDOR VISUAL DE FORMULARIOS A Y B
+   CONTENEDOR VISUAL DE FORMULARIOS A, B, C, D, E
 ========================================= */
 .formulario.solicitud-pasantia {
   width: 100%;
@@ -1498,7 +1508,7 @@ const actualizarSolicitante = () => {
   line-height: 1.5;
 }
 
-/* Formulario A: selector de institución + documentos */
+/* Formulario A y D: selector de institución + documentos */
 .solicitud-pasantia .documentacion-section {
   display: grid;
   grid-template-columns: minmax(220px, 1fr) minmax(0, 5fr);
@@ -1520,7 +1530,7 @@ const actualizarSolicitante = () => {
   font-weight: 600;
 }
 
-/* Formulario B: documentos ocupan todo el ancho */
+/* Formularios B, C y E: documentos ocupan todo el ancho */
 .solicitud-pasantia .documentacion-section-b {
   grid-template-columns: minmax(0, 1fr);
 }
